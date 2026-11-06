@@ -1,0 +1,66 @@
+name: ROS 2 Humble checks
+
+on: [push, pull_request, workflow_dispatch]
+
+permissions:
+  contents: read
+
+jobs:
+  unit:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Original geometry and project checks
+        run: |
+          PYTHONPATH=src/robotless_lab python3 -m unittest discover -s tests -p 'test_*.py' -v
+          python3 -m compileall -q src tests tools
+          python3 tools/check_project.py
+
+  humble-simulation:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 20
+    container: ros:humble-ros-base-jammy
+    env:
+      ROS_DOMAIN_ID: 42
+      ROS_LOCALHOST_ONLY: 1
+      TURTLEBOT3_MODEL: burger
+      LIBGL_ALWAYS_SOFTWARE: 1
+      GAZEBO_MODEL_DATABASE_URI: ''
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install declared simulation dependencies
+        run: |
+          apt-get update
+          apt-get install -y --no-install-recommends python3-colcon-common-extensions \
+            ros-humble-turtlebot3-gazebo ros-humble-turtlebot3-navigation2 \
+            ros-humble-slam-toolbox ros-humble-nav2-bringup
+      - name: Build the actual ROS package
+        run: |
+          source /opt/ros/humble/setup.bash
+          colcon build --symlink-install
+      - name: Real ROS nodes and launch resource checks
+        run: |
+          source /opt/ros/humble/setup.bash
+          source install/setup.bash
+          python3 tests/ros_smoke.py
+          ros2 launch robotless_lab simulation.launch.py --show-args
+          ros2 launch robotless_lab mapping.launch.py --show-args
+          ros2 launch robotless_lab navigation.launch.py --show-args
+      - name: Run headless virtual robot and read its sensors
+        run: |
+          source /opt/ros/humble/setup.bash
+          source install/setup.bash
+          ros2 launch robotless_lab simulation.launch.py gui:=false > gazebo-smoke.log 2>&1 &
+          simulation_pid=$!
+          trap 'kill -INT "$simulation_pid" 2>/dev/null || true; wait "$simulation_pid" || true' EXIT
+          python3 tests/simulation_smoke.py
+      - name: Upload headless simulation log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gazebo-smoke-log
+          path: gazebo-smoke.log
+          if-no-files-found: ignore

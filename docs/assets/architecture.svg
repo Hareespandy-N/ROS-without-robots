@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="470" viewBox="0 0 1080 470" role="img" aria-labelledby="title desc">
+  <title id="title">ROS without robots: learning architecture</title>
+  <desc id="desc">An original diagram: messages lead to a virtual robot, SLAM mapping and Nav2 navigation. Gazebo produces clock, scans, odometry and TF. A read-only reporter compares AMCL with a goal.</desc>
+  <!-- Original vector artwork. SPDX-License-Identifier: Apache-2.0 -->
+  <defs><marker id="arrow" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8" fill="none" stroke="#67e8f9" stroke-width="1.5"/></marker></defs>
+  <rect width="1080" height="470" rx="20" fill="#101c2d"/>
+  <g font-family="Arial, sans-serif">
+    <text x="40" y="51" font-size="27" font-weight="700" fill="#f4f8ff">A robot is optional. The ROS graph is real.</text>
+    <text x="40" y="82" font-size="15" fill="#adbed3">Original learning code + an original warehouse + official simulation dependencies</text>
+    <g fill="#1b3047" stroke="#375472" stroke-width="1.5"><rect x="40" y="125" width="220" height="110" rx="12"/><rect x="300" y="125" width="220" height="110" rx="12"/><rect x="560" y="125" width="220" height="110" rx="12"/><rect x="820" y="125" width="220" height="110" rx="12"/></g>
+    <g fill="#67e8f9" font-size="14" font-weight="700"><text x="58" y="153">01 / COMMUNICATE</text><text x="318" y="153">02 / SIMULATE</text><text x="578" y="153">03 / MAP</text><text x="838" y="153">04 / NAVIGATE</text></g>
+    <g fill="#f4f8ff" font-size="20" font-weight="700"><text x="58" y="185">Topics + services</text><text x="318" y="185">Virtual Burger</text><text x="578" y="185">SLAM Toolbox</text><text x="838" y="185">Nav2 + actions</text></g>
+    <g fill="#adbed3" font-size="14"><text x="58" y="212">Original Python lessons</text><text x="318" y="212">Our warehouse in Gazebo</text><text x="578" y="212">Explore, inspect, save</text><text x="838" y="212">Localize, plan, follow</text></g>
+    <g stroke="#67e8f9" stroke-width="2" marker-end="url(#arrow)"><path d="M266 180H292"/><path d="M526 180H552"/><path d="M786 180H812"/></g>
+    <rect x="40" y="276" width="480" height="115" rx="12" fill="#15283a" stroke="#375472"/>
+    <text x="60" y="308" font-size="18" fill="#f4f8ff" font-weight="700">Observe the interfaces</text><text x="60" y="340" font-size="16" fill="#67e8f9">/clock   /scan   /odom   TF</text><text x="60" y="368" font-size="14" fill="#adbed3">Simulation time, sensing and coordinate frames</text>
+    <rect x="560" y="276" width="480" height="115" rx="12" fill="#15283a" stroke="#375472"/>
+    <text x="580" y="308" font-size="18" fill="#f4f8ff" font-weight="700">Compare estimates with a goal</text><text x="580" y="340" font-size="16" fill="#f8d477">Read-only reporter: XY in mm, yaw in degrees</text><text x="580" y="368" font-size="14" fill="#adbed3">AMCL comparison is not independent accuracy proof.</text>
+    <text x="40" y="436" font-size="14" fill="#adbed3">Ubuntu 22.04 / ROS 2 Humble · Original schematic · Apache-2.0</text>
+  </g>
+</svg>

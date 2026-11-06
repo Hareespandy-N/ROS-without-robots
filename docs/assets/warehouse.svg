@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="620" viewBox="0 0 1000 620" role="img" aria-labelledby="title desc">
+  <title id="title">Original learning warehouse, top-down schematic</title>
+  <desc id="desc">A twelve by ten meter room with four blue shelf obstacles. The virtual robot starts at world x zero, y minus three. World and SLAM map origins can differ.</desc>
+  <!-- Original vector artwork. SPDX-License-Identifier: Apache-2.0 -->
+  <defs><pattern id="grid" width="42" height="42" patternUnits="userSpaceOnUse"><path d="M42 0H0V42" fill="none" stroke="#d6e1eb" stroke-width="1"/></pattern></defs>
+  <rect width="1000" height="620" rx="18" fill="#f3f7fb"/>
+  <g font-family="Arial, sans-serif">
+    <text x="38" y="48" font-size="26" font-weight="700" fill="#18314b">Learning warehouse</text><text x="38" y="78" font-size="15" fill="#526980">Original primitive geometry. A schematic, not a Gazebo screenshot or SLAM map.</text>
+    <rect x="68" y="128" width="504" height="420" fill="url(#grid)" stroke="#324c64" stroke-width="7"/>
+    <g fill="#2674ac" stroke="#154365" stroke-width="2"><rect x="210.8" y="304.4" width="50.4" height="67.2" rx="3"/><rect x="378.8" y="304.4" width="50.4" height="67.2" rx="3"/><rect x="210.8" y="199.4" width="50.4" height="67.2" rx="3"/><rect x="378.8" y="199.4" width="50.4" height="67.2" rx="3"/></g>
+    <g fill="#fff" font-size="17" font-weight="700" text-anchor="middle"><text x="236" y="344">A</text><text x="404" y="344">B</text><text x="236" y="239">C</text><text x="404" y="239">D</text></g>
+    <circle cx="320" cy="464" r="12" fill="#d88a20" stroke="#7a4a07" stroke-width="2"/><path d="M320 462V445M315 451L320 445L325 451" stroke="#fff" stroke-width="2" fill="none"/>
+    <text x="320" y="501" text-anchor="middle" font-size="14" fill="#18314b">Start (0, -3)</text><text x="320" y="113" text-anchor="middle" font-size="15" fill="#526980">12 m</text><text x="35" y="344" font-size="15" fill="#526980" transform="rotate(-90 35 344)">10 m</text>
+    <text x="620" y="165" font-size="21" font-weight="700" fill="#18314b">Inspect before sending a goal</text>
+    <g font-size="16" fill="#526980"><text x="620" y="207">Blue: static shelf obstacles</text><text x="620" y="239">Gold: virtual Burger spawn</text><text x="620" y="271">Grid: 1 meter spacing</text><text x="620" y="323">Shelf footprint: 1.2 × 1.6 m</text><text x="620" y="355">Central aisle between shelves: 2.8 m</text><text x="620" y="407">The saved SLAM map may use a</text><text x="620" y="432">different coordinate origin.</text><text x="620" y="476">Select initial poses and free goals</text><text x="620" y="501">on the map you actually created.</text></g>
+    <text x="68" y="588" font-size="14" fill="#526980">Original project artwork / Apache-2.0 / No third-party meshes, textures or paper figures</text>
+  </g>
+</svg>

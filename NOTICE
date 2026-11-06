@@ -1,0 +1,13 @@
+ROS without robots
+Copyright 2026 Hareespandy-N and project contributors
+
+Original project source, documentation, SVG diagrams and warehouse primitive
+geometry are provided under the Apache License, Version 2.0.
+
+This independent educational project uses separately installed ROS 2,
+TurtleBot3, Gazebo, SLAM Toolbox and Nav2 packages. Their code, robot assets,
+copyrights, licenses and trademarks remain with their respective owners.
+See THIRD_PARTY_NOTICES.md and docs/references.md.
+
+No affiliation or endorsement by the paper authors, Open Robotics, ROBOTIS,
+the Nav2 maintainers, or other upstream projects is implied.
