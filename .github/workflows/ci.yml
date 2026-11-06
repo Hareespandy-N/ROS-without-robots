@@ -53,9 +53,10 @@ jobs:
         run: |
           source /opt/ros/humble/setup.bash
           source install/setup.bash
-          ros2 launch robotless_lab simulation.launch.py gui:=false > gazebo-smoke.log 2>&1 &
+          timeout --signal=INT --kill-after=10s 120s \
+            ros2 launch robotless_lab simulation.launch.py gui:=false > gazebo-smoke.log 2>&1 &
           simulation_pid=$!
-          trap 'kill -INT "$simulation_pid" 2>/dev/null || true; wait "$simulation_pid" || true' EXIT
+          trap 'kill -TERM "$simulation_pid" 2>/dev/null || true; wait "$simulation_pid" || true' EXIT
           python3 tests/simulation_smoke.py
       - name: Upload headless simulation log
         if: always()
